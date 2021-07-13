@@ -20,7 +20,7 @@
         <div class="collapse navbar-collapse" id="navbarToggle">
           <div class="navbar-nav mr-auto">
             <a class="nav-item nav-link" href="/">Home</a>
-            <a class="nav-item nav-link" href="www.linkedin.com/in/tinsaedejene/">About</a>
+            <a class="nav-item nav-link" href="/about">About</a>
           </div>
         </div>
       </div>
@@ -29,6 +29,17 @@
   <main role="main" class="container">
     <div class="row">
       <div class="col-md-8">
+<!--          -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+       <div class="alert alert-{{ category }}">
+         {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<!--          -->
         <h1>This shows up on every page</h1> {% block content %}{% endblock %}
       </div>
     </div>
