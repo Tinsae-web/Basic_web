@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block content %}
+ <div class="content-section">
+        <form method="POST" action="">
+            {{ form_contact.hidden_tag() }}
+            <fieldset class="form_contact-group">
+                <legend class="border-bottom mb-4">Let's talk</legend>
+                <div class="form_contact-group">
+                    {{ form_contact.username.label(class="form_contact-control-label") }}
+		    {% if form_contact.username.errors %}
+			    {{ form_contact.username(class="form_contact-control form-control-lg is-invalid") }}
+    			       <div class="invalid-feedback">
+      				{% for error in form_contact.username.errors%}
+          			<span>{{error}}</span>
+      				{% endfor %}
+    		</div>
+		    {% else %}
+                    {{ form_contact.username(class="form_contact-control form_contact-control-lg") }}
+                {% endif %}
+		</div>
+                <div class="form_contact-group">
+                    {{ form_contact.email.label(class="form_contact-control-label") }}
+                    {{ form_contact.email(class="form_contact-control form_contact-control-lg") }}
+                </div>
+                <div class="form_contact-group">
+                    {{ form_contact.message.label(class="form_contact-control-label") }}
+                    {{ form_contact.message(class="form_contact-control form_contact-control-lg") }}
+                </div>
+            </fieldset>
+        <div class="form_contact-group">
+  {{ form_contact.submit(class="btn btn-outline-info") }}
+</div>
+	</form>
+    </div>
+{% endblock content %}
